@@ -4,6 +4,22 @@
     box-sizing: border-box;
 }
 
-.input-group-text{
-
+.col-md-12 {
+    padding: 0;
 }
+
+.left-nav .header {
+    margin-left: 10px;
+    
+}
+
+.icon-header {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid red; 
+}
+
+ 
+
+

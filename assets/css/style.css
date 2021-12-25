@@ -8,15 +8,9 @@
     padding: 0;
 }
 
-.body{
-    max-height: 100%;
-    width: 100%;
-}
-
 
 .left-nav .header {
-    margin-left: 10px;
-        ;
+    margin-left: 10px;     
 }
 
 .nav-3 {
@@ -24,7 +18,7 @@
 }
 
 .container-noidunggamil .content{
-    height: 625px;
+    height: 600px;
     width: 100%;
 }
 

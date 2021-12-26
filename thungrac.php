@@ -55,7 +55,7 @@
                     <ul class="list-group mb-3 mt-2">
                         <li class="list-group-item d-flex justify-content-between align-items-center ">
                             <div class="d-grid gap-2">
-                                <button class="btn btn-primary pe-4" type="button"><i class="bi bi-calendar2"></i><span class="header">Hộp thư đến</span></button>
+                               <a href="index.php" class="btn btn-primary pe-4" type="button"><i class="bi bi-calendar2"></i><span class="header">Hộp thư đến</span></a>
                             </div>
                             <span class="badge bg-primary rounded-pill">14</span>
                         </li>
@@ -73,7 +73,7 @@
                             <span class="badge bg-primary rounded-pill">1</span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <button class="btn btn-primary" type="button"><i class="bi bi-trash"></i><span class="header">Thùng rác</span></button>
+                            <a href="thungrac.php" class="btn btn-primary" type="button"><i class="bi bi-trash"></i><span class="header">Thùng rác</span></a>
                             <span class="badge bg-primary rounded-pill">1</span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -163,9 +163,9 @@
                                             <tr>
                                                 <th scope="col">Người gửi</th>
                                                 <th scope="col ">Chủ đề thư</th>
-                                                <th scope="col ">Ngày gửi</th>
-                                                <th scope="col ">Gắn sao</th>
+                                                <th scope="col ">Ngày gửi</th>   
                                                 <th scope="col ">Đọc thư</th>
+                                                <th scope="col ">Khôi phục </th>           
                                                 <th scope="col">Xóa</th>
                                             </tr>
                                         </thead>
@@ -179,7 +179,7 @@
                                                 die("Kết nối thất bại. Vui lòng kiểm tra lại các thông tin máy chủ");
                                             }
                                             // Bước 02: Thực hiện truy vấn
-                                            $sql = "SELECT `Mathu`,`emailgui`, `Chudethu`, `Ngaygui` FROM `db_hopthu` WHERE emailnhan = 'song@gmail.com'";
+                                            $sql = "SELECT `Mathu`,`emailgui`, `Chudethu`, `Ngaygui` FROM `db_thungrac` WHERE emailnhan = 'song@gmail.com'";
                                             $result = mysqli_query($conn, $sql);
                                             // Bước 03: Xử lý kết quả truy vấn
                                             if (mysqli_num_rows($result) > 0) {
@@ -191,9 +191,9 @@
                                                         <th scope="row"><?php echo $row['emailgui']; ?></th>
                                                         <td><?php echo $row['Chudethu']; ?></td>
                                                         <td><?php echo $row['Ngaygui']; ?></td>
-                                                        <td><a href="#"><i class="bi bi-star ms-4"></i></a></td>
                                                         <td><a href="#"><i class="bi bi-book ms-4"></i></a></td>
-                                                        <td><a href="delete_mail.php?Mathu=<?php echo $row['Mathu']; ?>"><i class="bi bi-trash ms-2 "></i></a></td>
+                                                        <td><a href="laythu_thungrac_mail.php?Mathu=<?php echo $row['Mathu']; ?>"><i class="bi bi-arrow-counterclockwise ms-4" ></i></a></td>
+                                                        <td><a href="delete_thungrac_mail.php?Mathu=<?php echo $row['Mathu']; ?>"><i class="bi bi-trash ms-2 "></i></a></td>
                                                         
                                                     </tr>
                                                     

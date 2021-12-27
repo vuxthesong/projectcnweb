@@ -23,11 +23,11 @@
                                         <thead>
                                             <tr>
                                                 <th scope="col">Người gửi</th>
-                                                <th scope="col ">Người nhận</th>
+                                                <th scope="col">Người nhận</th>
                                                 <th scope="col ">Chủ đề thư</th>
                                                 <th scope="col ">Ngày gửi</th>
+                                                <th scope="col ">Bỏ Gắn sao</th>
                                                 <th scope="col ">Đọc thư</th>
-                                                <th scope="col ">Khôi phục </th>
                                                 <th scope="col">Xóa</th>
                                             </tr>
                                         </thead>
@@ -41,25 +41,25 @@
                                                 die("Kết nối thất bại. Vui lòng kiểm tra lại các thông tin máy chủ");
                                             }
                                             // Bước 02: Thực hiện truy vấn
-                                            $sql = "SELECT `Mathu`,`emailgui`,`emailnhan`, `Chudethu`, `Ngaygui` FROM `db_thungrac` WHERE emailnhan = 'song@gmail.com' or emailgui = 'song@gmail.com' ";
+                                            $sql = "SELECT `Mathu`,`emailgui`,`emailnhan`, `Chudethu`, `Ngaygui` FROM `db_hopthu` WHERE Sao = 1";
                                             $result = mysqli_query($conn, $sql);
                                             // Bước 03: Xử lý kết quả truy vấn
                                             if (mysqli_num_rows($result) > 0) {
                                                 while ($row = mysqli_fetch_assoc($result)) {
                                             ?>
-
-                                                    <tr>
-
+                                                    
+                                                    <tr>    
+                                                        
                                                         <th scope="row"><?php echo $row['emailgui']; ?></th>
                                                         <td><?php echo $row['emailnhan']; ?></td>
                                                         <td><?php echo $row['Chudethu']; ?></td>
                                                         <td><?php echo $row['Ngaygui']; ?></td>
-                                                        <td><a href="#"><i class="bi bi-book ms-4"></i></a></td>
-                                                        <td><a href="laythu_thungrac_mail.php?Mathu=<?php echo $row['Mathu']; ?>"><i class="bi bi-arrow-counterclockwise ms-4"></i></a></td>
-                                                        <td><a href="delete_thungrac_mail.php?Mathu=<?php echo $row['Mathu']; ?>"><i class="bi bi-trash ms-2 "></i></a></td>
-
+                                                        <td><a href="danhdausao_mail.php?Mathu=<?php echo $row['Mathu']; ?>"><i class="bi bi-star-fill text-warning ms-4"></i></a></td>
+                                                        <td><a href="doc_mail.php?Mathu=<?php echo $row['Mathu']; ?>"><i class="bi bi-book ms-4"></i></a></td>
+                                                        <td><a href="delete_mail.php?Mathu=<?php echo $row['Mathu']; ?>"><i class="bi bi-trash ms-2 "></i></a></td>
+                                                        
                                                     </tr>
-
+                                                    
                                             <?php
                                                 }
                                             }

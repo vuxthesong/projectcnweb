@@ -21,8 +21,8 @@
         while($row = mysqli_fetch_assoc($result1)){
         
         $Mathu = $row['Mathu'];
-        $emai_gui = $row['emailgui'];
-        $emai_nhan = $row['emailnhan'];
+        $email_gui = $row['emailgui'];
+        $email_nhan = $row['emailnhan'];
         $Chude = $row['Chudethu'];
         $Noidung = $row['Noidung'];
         $Ngaygui = $row['Ngaygui'];
@@ -36,7 +36,7 @@
 
     // Them mail bi xoa vao thung rac
     $sql2 = "INSERT INTO `db_hopthu`(`Mathu`, `emailgui`, `emailnhan`, `Chudethu`, `Noidung`, `Ngaygui`) 
-                VALUES ('$Mathu','$emai_gui','$emai_nhan','$Chude','$Noidung','$Ngaygui')";
+                VALUES ('$Mathu','$email_gui','$email_nhan','$Chude','$Noidung','$Ngaygui')";
     // echo $sql;
     $ketqua = mysqli_query($conn,$sql2);
     

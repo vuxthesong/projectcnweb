@@ -43,7 +43,8 @@
     if(!$ketqua){
         header("location: error.php"); //Chuyển hướng lỗi
     }
-
+    else
+        echo "có chạy đến đây không";       
 
     //Xoa khoi hom thu
     $sql3 = "DELETE FROM db_hopthu WHERE Mathu = '$ma_thu'";
@@ -51,7 +52,7 @@
     $number = mysqli_query($conn,$sql3);
 
     if($number > 0){
-        header("location: hopthuden.php"); //Chuyển hướng về Trang quản trị
+        header("location: thudagui.php"); //Chuyển hướng về Trang quản trị
     }else{
         header("location: error.php"); //Chuyển hướng, hiển thị thông báo lỗi
     }

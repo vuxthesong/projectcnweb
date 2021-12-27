@@ -23,7 +23,7 @@ require("./assets/template/khung_gmail.php");
                 <table class="table table-hover table-ms table-responsive align-middle">
                     <thead>
                         <tr>
-                            <th scope="col">Người gửi 12</th>
+                            <th scope="col">Người gửi</th>
                             <th scope="col ">Chủ đề thư</th>
                             <th scope="col ">Ngày gửi</th>
                             <th scope="col ">Gắn sao</th>

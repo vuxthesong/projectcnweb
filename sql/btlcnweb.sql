@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 28, 2021 lúc 08:06 AM
+-- Thời gian đã tạo: Th12 28, 2021 lúc 08:19 AM
 -- Phiên bản máy phục vụ: 10.4.21-MariaDB
 -- Phiên bản PHP: 8.0.12
 
@@ -78,10 +78,10 @@ CREATE TABLE `db_luutrumail` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `db_nguoi dung`
+-- Cấu trúc bảng cho bảng `db_nguoidung`
 --
 
-CREATE TABLE `db_nguoi dung` (
+CREATE TABLE `db_nguoidung` (
   `email` varchar(50) NOT NULL,
   `matkhau` varchar(30) DEFAULT NULL,
   `Hoten` varchar(50) DEFAULT NULL,
@@ -91,10 +91,10 @@ CREATE TABLE `db_nguoi dung` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `db_nguoi dung`
+-- Đang đổ dữ liệu cho bảng `db_nguoidung`
 --
 
-INSERT INTO `db_nguoi dung` (`email`, `matkhau`, `Hoten`, `GioiTinh`, `Ngaysinh`, `Diachi`) VALUES
+INSERT INTO `db_nguoi_dung` (`email`, `matkhau`, `Hoten`, `GioiTinh`, `Ngaysinh`, `Diachi`) VALUES
 ('nguyenvana23@gmail.com', 'abc', 'Nguyễn Vân Anh', 'Nữ', '2021-12-23', 'Hà Nội'),
 ('nguyenvanb45@gmail.com', 'abc', 'Nguyễn Văn Bình', 'Nam', '2021-12-23', 'Nam Định'),
 ('nguyenvanc53@gmail.com', 'abc', 'Nguyễn Văn Cường', 'Nam', '2021-12-23', 'Hải Phòng'),
@@ -141,9 +141,9 @@ ALTER TABLE `db_hopthu`
   ADD KEY `emainhan` (`emailnhan`) USING BTREE;
 
 --
--- Chỉ mục cho bảng `db_nguoi dung`
+-- Chỉ mục cho bảng `db_nguoi_dung`
 --
-ALTER TABLE `db_nguoi dung`
+ALTER TABLE `db_nguoi_dung`
   ADD PRIMARY KEY (`email`),
   ADD UNIQUE KEY `email` (`email`);
 
@@ -171,8 +171,8 @@ ALTER TABLE `db_hopthu`
 -- Các ràng buộc cho bảng `db_hopthu`
 --
 ALTER TABLE `db_hopthu`
-  ADD CONSTRAINT `fk_emailgui` FOREIGN KEY (`emailgui`) REFERENCES `db_nguoi dung` (`email`),
-  ADD CONSTRAINT `fk_emailnhan` FOREIGN KEY (`emailnhan`) REFERENCES `db_nguoi dung` (`email`);
+  ADD CONSTRAINT `fk_emailgui` FOREIGN KEY (`emailgui`) REFERENCES `db_nguoi_dung` (`email`),
+  ADD CONSTRAINT `fk_emailnhan` FOREIGN KEY (`emailnhan`) REFERENCES `db_nguoi_dung` (`email`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

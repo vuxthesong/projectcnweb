@@ -1,4 +1,10 @@
 <?php
+//Kiểm tra thẻ làm việc
+session_start();
+if(!isset($_SESSION['isLoginOK']))
+{
+    header("location:login.php");
+}
 require("./assets/template/khung_gmail.php");
 ?>
 <!-- Phần hiển thị nội dung mail -->

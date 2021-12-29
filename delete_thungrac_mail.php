@@ -1,5 +1,10 @@
 <?php
-  
+     //Kiểm tra thẻ làm việc
+     session_start();
+     if(!isset($_SESSION['isLoginOK']))
+     {
+         header("location:login.php");
+     }
     // index.php TRUYỀN DỮ LIỆU SANG
     // delete_mail: NHẬN DỮ LIỆU TỪ admin.php gửi sang
     $ma_thu = $_GET['Mathu'];
@@ -23,4 +28,3 @@
 
     // Bước 03: Đóng kết nối
     mysqli_close($conn);
-?>

@@ -1,4 +1,10 @@
 <?php
+    //Kiểm tra thẻ làm việc
+    session_start();
+    if(!isset($_SESSION['isLoginOK']))
+    {
+        header("location:login.php");
+    }
     // Xử lý giá trị GỬI TỚI
 
     $email_gui     = $_POST['txtEmailgui'];

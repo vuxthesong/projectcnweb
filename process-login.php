@@ -9,12 +9,12 @@
         //Ở đây còn phải kiểm tra người dùng đã nhập chưa
 
         // Bước 01: Kết nối Database Server
-        $conn = mysqli_connect('localhost','root','','gmail');
+        $conn = mysqli_connect('localhost','root','','btlcnweb');
         if(!$conn){
             die("Kết nối thất bại. Vui lòng kiểm tra lại các thông tin máy chủ");
         }
         // Bước 02: Thực hiện truy vấn
-        $sql = "SELECT * FROM db_taikhoan WHERE email = '$email' AND matkhau='$pass'";
+        $sql = "SELECT * FROM db_nguoidung WHERE email = '$email' AND matkhau='$pass'";
         // Ở đây còn có các vấn đề về tính hợp lệ dữ liệu nhập vào FORM
         // Nghiêm trọng: lỗi SQL Injection
 
@@ -22,7 +22,7 @@
         if(mysqli_num_rows($result) > 0){
             // CẤP THẺ LÀM VIỆC
             $_SESSION['isLoginOK'] = $email;
-            header("location: admin.php"); //Chuyển hướng về Trang quản trị
+            header("location: hopthuden.php"); //Chuyển hướng về Trang quản trị
         }else{
             $error = "Bạn nhập thông tin Email hoặc mật khẩu chưa chính xác";
             header("location: login.php?error=$error"); //Chuyển hướng, hiển thị thông báo lỗi

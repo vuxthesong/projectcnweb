@@ -57,6 +57,8 @@
         <form class="form-signin" action="process-signup.php" method="post">
             
             <h1 class="h3 mb-3 font-weight-normal">Sign Up</h1>
+            <label for="txtUser" class="sr-only">Name</label>
+            <input type="text" id="txtName" name="txtUser" class="form-control" placeholder="Full Name" required autofocus>
             <label for="txtUser" class="sr-only">Username</label>
             <input type="text" id="txtUser" name="txtUser" class="form-control" placeholder="Username" required autofocus>
             <label for="inputEmail" class="sr-only">Email address</label>

@@ -1,5 +1,5 @@
 <?php
-include("template/header1.php");
+include("./assets/template/header1.php");
 
 
 
@@ -22,7 +22,7 @@ include("template/header1.php");
     </div>
     </main>
     <?php
-include("template/footer.php");
+include("./assets/template/footer.php");
 
 
 

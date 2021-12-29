@@ -23,29 +23,29 @@
     else{
         header("location: error.php"); //Chuyển hướng, hiển thị thông báo lỗi
     }
-    echo $Sao;
 
     if($Sao==0)
     {
          $sql2 = "UPDATE `db_hopthu` SET `Sao`=1 WHERE Mathu = '$ma_thu'";
         // echo $sql;
          $ketqua2 = mysqli_query($conn,$sql2);
-        echo $sql2;
+        
          if(!$ketqua2){
-        //header("location: error.php"); //Chuyển hướng lỗi
+        header("location: error.php"); //Chuyển hướng lỗi
         }
     }
-    else
+    if($Sao==1)
     {
         $sql3 = "UPDATE `db_hopthu` SET `Sao`=0 WHERE Mathu = '$ma_thu'";
         // echo $sql;
         $ketqua3 = mysqli_query($conn,$sql3);
-        echo $sql3;
+      
         if(!$ketqua3){
-        //header("location: error.php"); //Chuyển hướng lỗi
+        header("location: error.php"); //Chuyển hướng lỗi
         }
-    }   
-    header("location: hopthuden.php");
+    }  
+     
+    header("location: thudagui.php");
 
     // Bước 03: Đóng kết nối
     mysqli_close($conn);

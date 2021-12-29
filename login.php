@@ -10,8 +10,8 @@
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
 
-    <link rel="stylesheet" href="css/styleone.css">
-    <link rel="stylesheet" href="css/signin.css">
+    <link rel="stylesheet" href="./assets/css/styleone.css">
+    <link rel="stylesheet" href="./assets/css/signin.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
 
 </head>
@@ -20,10 +20,10 @@
     <div id="header">
         <div class="h-left">
             <a href="index.php">
-                <img src="images/image-0724023449749.jpg" alt="" />
+                <img src="./assets/img/image-0724023449749.jpg" alt="" />
             </a>
 
-            <a href="index.php"><span> Gmail</span></a>
+            <a href="index.php"  class="text-decoration-none"><span class="text-muted fs-4 text-decoration-none"> Gmail</span></a>
         </div>
         <div class="h-right">
             <a class="button
@@ -78,7 +78,7 @@
         </div>    
     </main>
 <?php
-include("template/footer.php");
+include("./assets/template/footer.php");
 
 
 

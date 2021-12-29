@@ -1,0 +1,24 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.col-md-12 {
+    padding: 0;
+}
+
+
+.left-nav .header {
+    margin-left: 10px;     
+}
+
+.nav-3 {
+    min-height: 59px;
+}
+
+.container-noidunggamil .content{
+    height: 600px;
+    width: 100%;
+}
+

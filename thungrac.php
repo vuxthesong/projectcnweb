@@ -54,7 +54,7 @@
                                                         <td><?php echo $row['emailnhan']; ?></td>
                                                         <td><?php echo $row['Chudethu']; ?></td>
                                                         <td><?php echo $row['Ngaygui']; ?></td>
-                                                        <td><a href="#"><i class="bi bi-book ms-4"></i></a></td>
+                                                        <td><a href="docthu.php"><i class="bi bi-book ms-4"></i></a></td>
                                                         <td><a href="laythu_thungrac_mail.php?Mathu=<?php echo $row['Mathu']; ?>"><i class="bi bi-arrow-counterclockwise ms-4"></i></a></td>
                                                         <td><a href="delete_thungrac_mail.php?Mathu=<?php echo $row['Mathu']; ?>"><i class="bi bi-trash ms-2 "></i></a></td>
 

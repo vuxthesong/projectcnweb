@@ -5,6 +5,7 @@
      {
          header("location:login.php");
      }
+     $username = $_SESSION['isLoginOK'];
     // index.php TRUYỀN DỮ LIỆU SANG
     // delete_mail: NHẬN DỮ LIỆU TỪ admin.php gửi sang
     $ma_thu = $_GET['Mathu'];

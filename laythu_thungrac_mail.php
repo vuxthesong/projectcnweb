@@ -5,6 +5,7 @@
     {
          header("location:login.php");
     }
+        $username = $_SESSION['isLoginOK'];
     // index.php TRUYỀN DỮ LIỆU SANG
     // delete_mail: NHẬN DỮ LIỆU TỪ admin.php gửi sang
     $ma_thu = $_GET['Mathu'];
@@ -31,6 +32,7 @@
         $Chude = $row['Chudethu'];
         $Noidung = $row['Noidung'];
         $Ngaygui = $row['Ngaygui'];
+        $mamail = $row['mamail'];
     } 
     }
     else{
@@ -40,8 +42,8 @@
 
 
     // Them mail bi xoa vao thung rac
-    $sql2 = "INSERT INTO `db_hopthu`(`Mathu`, `emailgui`, `emailnhan`, `Chudethu`, `Noidung`, `Ngaygui`) 
-                VALUES ('$Mathu','$email_gui','$email_nhan','$Chude','$Noidung','$Ngaygui')";
+    $sql2 = "INSERT INTO `db_hopthu`(`Mathu`, `emailgui`, `emailnhan`, `Chudethu`, `Noidung`, `Ngaygui`,`mamail`) 
+                VALUES ('$Mathu','$email_gui','$email_nhan','$Chude','$Noidung','$Ngaygui','$mamail')";
     // echo $sql;
     $ketqua = mysqli_query($conn,$sql2);
     

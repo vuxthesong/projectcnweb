@@ -5,6 +5,7 @@
      {
          header("location:login.php");
      }
+     $username = $_SESSION['isLoginOK'];
     // index.php TRUYỀN DỮ LIỆU SANG
     // delete_mail: NHẬN DỮ LIỆU TỪ admin.php gửi sang
     $ma_thu = $_GET['Mathu'];
@@ -19,7 +20,7 @@
 
     // Lay thong tin cua mail bi xoa
 
-    $sql1 = "SELECT * FROM db_hopthu WHERE Mathu = '$ma_thu'";
+    $sql1 = "SELECT * FROM db_hopthu WHERE Mathu = '$ma_thu' and mamail = 0 ";
     $result1 = mysqli_query($conn, $sql1);
     if (mysqli_num_rows($result1) > 0) 
     {
@@ -40,8 +41,8 @@
 
 
     // Them mail bi xoa vao thung rac
-    $sql2 = "INSERT INTO `db_thungrac`(`Mathu`, `emailgui`, `emailnhan`, `Chudethu`, `Noidung`, `Ngaygui`) 
-                VALUES ('$Mathu','$email_gui','$email_nhan','$Chude','$Noidung','$Ngaygui')";
+    $sql2 = "INSERT INTO `db_thungrac`(`Mathu`, `emailgui`, `emailnhan`, `Chudethu`, `Noidung`, `Ngaygui` ,`mamail`) 
+                VALUES ('$Mathu','$email_gui','$email_nhan','$Chude','$Noidung','$Ngaygui',0)";
     // echo $sql;
     $ketqua = mysqli_query($conn,$sql2);
     
@@ -51,7 +52,7 @@
 
 
     //Xoa khoi hom thu
-    $sql3 = "DELETE FROM db_hopthu WHERE Mathu = '$ma_thu'";
+    $sql3 = "DELETE FROM db_hopthu WHERE Mathu = '$ma_thu' and mamail = 0 ";
 
     $number = mysqli_query($conn,$sql3);
 

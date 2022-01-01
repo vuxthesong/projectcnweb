@@ -1,4 +1,5 @@
 <?php
+
 use Componere\Value;
     if(!isset($_POST['ntnSignUp'])){
         header("location:signup.php");

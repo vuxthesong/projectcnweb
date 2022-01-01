@@ -3,27 +3,27 @@
          $conn = mysqli_connect('localhost', 'root', '', 'btlcnweb');
          if (!$conn) {
              die("Kết nối thất bại. Vui lòng kiểm tra lại các thông tin máy chủ");
-         }
+         }  
          // Bước 02: Thực hiện truy vấn lấy số thư đến
-         $sql = "SELECT `Mathu`,`emailgui`, `Chudethu`, `Ngaygui` FROM `db_hopthu` WHERE emailnhan = 'song@gmail.com'";
+         $sql = "SELECT `Mathu`,`emailgui`, `Chudethu`, `Ngaygui` FROM `db_hopthu` WHERE emailnhan = '$username' and mamail = 0";
          $result = mysqli_query($conn, $sql);
          // Bước 03: Xử lý kết quả truy vấn
          $counthopthuden =mysqli_num_rows($result);
 
          // Bước 02: Thực hiện truy vấn lấy số thư đã gửi
-         $sql = "SELECT `Mathu`,`emailgui`, `Chudethu`, `Ngaygui` FROM `db_hopthu` WHERE emailgui = 'song@gmail.com'";
+         $sql = "SELECT `Mathu`,`emailgui`, `Chudethu`, `Ngaygui` FROM `db_hopthu` WHERE emailgui = '$username' and mamail = 1 ";
          $result = mysqli_query($conn, $sql);
          // Bước 03: Xử lý kết quả truy vấn
          $countthudagui =mysqli_num_rows($result);
 
          // Bước 02: Thực hiện truy vấn lấy số thư trong thùng rác
-         $sql = "SELECT `Mathu`,`emailgui`, `Chudethu`, `Ngaygui` FROM `db_thungrac` WHERE emailnhan = 'song@gmail.com' or emailgui = 'song@gmail.com'";
+         $sql = "SELECT `Mathu`,`emailgui`, `Chudethu`, `Ngaygui` FROM `db_thungrac` WHERE (emailgui = '$username' and mamail = 1) or ( emailnhan = '$username' and mamail = 0)";
          $result = mysqli_query($conn, $sql);
          // Bước 03: Xử lý kết quả truy vấn
          $countthungrac =mysqli_num_rows($result);
 
          // Bước 02: Thực hiện truy vấn lấy số thư gắn sao
-         $sql = "SELECT `Mathu`,`emailgui`, `Chudethu`, `Ngaygui` FROM `db_hopthu` WHERE Sao = 1";
+         $sql = "SELECT `Mathu`,`emailgui`, `Chudethu`, `Ngaygui` FROM `db_hopthu` WHERE ( emailnhan = '$username' and mamail = 0 and Sao = 1 ) or (emailgui = '$username' and mamail = 1 and Sao = 1 ) ";
          $result = mysqli_query($conn, $sql);
          // Bước 03: Xử lý kết quả truy vấn
          $countsao =mysqli_num_rows($result);
@@ -80,8 +80,8 @@
                 <!--Left-->
                 <div class="left-nav w-100">
 
-                    <div class="button text-decoration-underline rounded-pill hover-overlay hover-overlay ">
-                        <a href="soanthumoi.php" type="button" class="btn btn-white rounded-pill shadow p-2 pe-3 mb-3 bg-body rounded mx-4 mt-3"><img src="./assets/img/img1/compose.png" alt=""> <span class="fw-bold">Soạn Thư mới</span>
+                    <div class="btn_soanthumoi button text-decoration-underline ">
+                        <a href="soanthumoi.php" type="button" role="button" class="btn btn-white  rounded-pill  p-2 pe-3 mb-3 bg-body rounded mx-4 mt-3 border border-dark "><img src="./assets/img/img1/compose.png" alt=""> <span class="fw-bold">Soạn Thư mới</span>
                         </a>
                     </div>
 
@@ -90,29 +90,29 @@
                 
                         <li class="list-group-item d-flex justify-content-between align-items-center ">
                             <div class="d-grid gap-2">
-                               <a href="hopthuden.php" class="btn btn-primary pe-4" type="button"><i class="bi bi-calendar2"></i><span class="header">Hộp thư đến</span></a>
+                               <a href="hopthuden.php" class="btn btn-primary pe-4 border border-dark" type="button"><i class="bi bi-calendar2"></i><span class="header">Hộp thư đến</span></a>
                             </div>
-                            <span class="badge bg-primary rounded-pill"><?php echo $counthopthuden ?></span>
+                            <span class="badge bg-primary rounded-pill "><?php echo $counthopthuden ?></span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <a href="thudagui.php" class="btn btn-primary" type="button"><i class="bi bi-arrow-right-square-fill"></i><span class="header">Đã
+                            <a href="thudagui.php" class="btn btn-primary border border-dark" type="button"><i class="bi bi-arrow-right-square-fill"></i><span class="header">Đã
                                     gửi</span></a>
                             <span class="badge bg-primary rounded-pill"><?php echo $countthudagui ?></span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <a href="thungrac.php" class="btn btn-primary" type="button"><i class="bi bi-trash"></i><span class="header">Thùng rác</span></a>
+                            <a href="thungrac.php" class="btn btn-primary border border-dark" type="button"><i class="bi bi-trash"></i><span class="header">Thùng rác</span></a>
                             <span class="badge bg-primary rounded-pill"><?php echo $countthungrac ?></span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <a href="hopthusao.php" class="btn btn-primary" type="button"><i class="bi bi-star-fill"></i><span class="header">Có gắn sao</span></a>
+                            <a href="hopthusao.php" class="btn btn-primary border border-dark" type="button"><i class="bi bi-star-fill"></i><span class="header">Có gắn sao</span></a>
                             <span class="badge bg-primary rounded-pill"><?php echo $countsao ?></span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <button class="btn btn-primary" type="button"><i class="bi bi-clock-fill"></i><span class="header">Đã tạm ẩn</span></button>
+                            <button class="btn btn-primary border border-dark" type="button"><i class="bi bi-clock-fill"></i><span class="header">Đã tạm ẩn</span></button>
                             <span class="badge bg-primary rounded-pill">...</span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <button class="btn btn-primary" type="button"><i class="bi bi-arrow-down-square-fill"></i><span class="header">Danh sách mở
+                            <button class="btn btn-primary border border-dark" type="button"><i class="bi bi-arrow-down-square-fill"></i><span class="header">Danh sách mở
                                     rộng</span></button>
                         </li>
                     </ul>
@@ -123,11 +123,11 @@
                         <ul class="meetform list-group list-group-flush w-100 mb-3 ">
 
                             <li class="list-group-item">
-                                <button type="button" class="btn btn-primary "><i class="bi bi-camera-video-fill"></i>
+                                <button type="button" class="btn btn-primary border border-dark "><i class="bi bi-camera-video-fill"></i>
                                     <span class="header">Bắt đầu cuộc họp</span></button>
                             </li>
                             <li class="list-group-item">
-                                <button type="button" class="btn btn-primary"><i class="bi bi-tv-fill"></i>
+                                <button type="button" class="btn btn-primary border border-dark"><i class="bi bi-tv-fill"></i>
                                     <span class="header">Tham gia cuộc họp</span></button>
                             </li>
 
@@ -141,11 +141,10 @@
                                 <i class="bi bi-person-circle"></i>
                             </div>
                             <div class="col-md-9 ms-2 fs-5">
-                                <span>User name</span>
-                                <i class="bi bi-chevron-compact-down"></i>
+                                <span><?php echo $username ?></span>
                             </div>
-                            <div class="col-md-1 fs-4 mx-auto">
-                                <i class="bi bi-plus"></i>
+                            <div class="col-md-1 fs-4  text-muted">
+                                <i class="bi bi-chevron-compact-down"></i>
                             </div>
                         </div>
 

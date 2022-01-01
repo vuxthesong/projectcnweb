@@ -5,6 +5,7 @@ if(!isset($_SESSION['isLoginOK']))
 {
     header("location:login.php");
 }
+    $username = $_SESSION['isLoginOK'];
 require("./assets/template/khung_gmail.php");
 ?>
 <!-- Phần hiển thị nội dung mail -->
@@ -46,7 +47,7 @@ require("./assets/template/khung_gmail.php");
                             die("Kết nối thất bại. Vui lòng kiểm tra lại các thông tin máy chủ");
                         }
                         // Bước 02: Thực hiện truy vấn các mail sao
-                        $sql = "SELECT `Mathu`,`emailgui`, `Chudethu`, `Ngaygui` FROM `db_hopthu` WHERE emailgui = 'song@gmail.com' and Sao = 1 ";
+                        $sql = "SELECT `Mathu`,`emailnhan`, `Chudethu`, `Ngaygui` FROM `db_hopthu` WHERE (mamail = 1 and (emailgui = '$username' and Sao = 1)) ";
                         $result = mysqli_query($conn, $sql);
                         // Bước 03: Xử lý kết quả truy vấn
                         if (mysqli_num_rows($result) > 0) {
@@ -55,12 +56,12 @@ require("./assets/template/khung_gmail.php");
 
                                 <tr>
 
-                                    <th scope="row"><?php echo $row['emailgui']; ?></th>
+                                    <th scope="row"><?php echo $row['emailnhan']; ?></th>
                                     <td><?php echo $row['Chudethu']; ?></td>
                                     <td><?php echo $row['Ngaygui']; ?></td>
                                     <td><a id="the_star" href="danhdausao_mail_thudagui.php?Mathu=<?php echo $row['Mathu']; ?>"><i id="icon_star" class="bi bi-star-fill text-warning ms-4"></i></a> </td>
                                     <td><a href="doc_mail.php?Mathu=<?php echo $row['Mathu']; ?>"><i class="bi bi-book ms-4"></i></a></td>
-                                    <td><a href="delete_mail.php?Mathu=<?php echo $row['Mathu']; ?>"><i class="bi bi-trash ms-2 "></i></a></td>
+                                    <td><a href="delete_mail_thudagui.php?Mathu=<?php echo $row['Mathu']; ?>"><i class="bi bi-trash ms-2 "></i></a></td>
 
                                 </tr>
 
@@ -68,7 +69,7 @@ require("./assets/template/khung_gmail.php");
                             }
                         }
                         // Bước 02: Thực hiện truy vấn các mail không có sao
-                        $sql = "SELECT `Mathu`,`emailgui`, `Chudethu`, `Ngaygui` FROM `db_hopthu` WHERE emailgui = 'song@gmail.com' and Sao = 0 ";
+                        $sql = "SELECT `Mathu`,`emailnhan`, `Chudethu`, `Ngaygui` FROM `db_hopthu` WHERE (mamail = 1 and (emailgui = '$username' and Sao = 0)) ";
                         $result = mysqli_query($conn, $sql);
                         // Bước 03: Xử lý kết quả truy vấn
                         if (mysqli_num_rows($result) > 0) {
@@ -77,7 +78,7 @@ require("./assets/template/khung_gmail.php");
 
                                 <tr>
 
-                                    <th scope="row"><?php echo $row['emailgui']; ?></th>
+                                    <th scope="row"><?php echo $row['emailnhan']; ?></th>
                                     <td><?php echo $row['Chudethu']; ?></td>
                                     <td><?php echo $row['Ngaygui']; ?></td>
                                     <td><a id="the_star" href="danhdausao_mail_thudagui.php?Mathu=<?php echo $row['Mathu']; ?>"><i id="icon_star" class="bi bi-star-fill text-light ms-4"></i></a> </td>

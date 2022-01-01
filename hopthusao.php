@@ -4,7 +4,8 @@
 session_start();
 if (!isset($_SESSION['isLoginOK'])) {
     header("location:login.php");
-}
+}   
+    $username = $_SESSION['isLoginOK'];
 require("./assets/template/khung_gmail.php");
 ?>
 <!-- Phần hiển thị nội dung mail -->
@@ -47,7 +48,7 @@ require("./assets/template/khung_gmail.php");
                             die("Kết nối thất bại. Vui lòng kiểm tra lại các thông tin máy chủ");
                         }
                         // Bước 02: Thực hiện truy vấn
-                        $sql = "SELECT `Mathu`,`emailgui`,`emailnhan`, `Chudethu`, `Ngaygui` FROM `db_hopthu` WHERE Sao = 1";
+                        $sql = "SELECT `Mathu`,`emailgui`,`emailnhan`, `Chudethu`, `Ngaygui` FROM `db_hopthu` WHERE ( emailnhan = '$username' and mamail = 0 and Sao = 1 ) or (emailgui = '$username' and mamail = 1 and Sao = 1 ) ";
                         $result = mysqli_query($conn, $sql);
                         // Bước 03: Xử lý kết quả truy vấn
                         if (mysqli_num_rows($result) > 0) {

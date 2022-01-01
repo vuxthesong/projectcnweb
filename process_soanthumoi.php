@@ -5,6 +5,7 @@
     {
         header("location:login.php");
     }
+    $username = $_SESSION['isLoginOK'];
     // Xử lý giá trị GỬI TỚI
 
     $email_gui     = $_POST['txtEmailgui'];
@@ -36,12 +37,15 @@
     }
 
     // Bước 02: Thực hiện truy vấn
-    $sql = "INSERT INTO `db_hopthu`(`Mathu`,`emailgui`, `emailnhan`, `Chudethu`, `Noidung`, `Ngaygui`) 
-        VALUES ('NULL','$email_gui','$email_nhan','$Chude','$Noidung','$Ngaygui')";
+    $sql1 = "INSERT INTO `db_hopthu`(`Mathu`,`emailgui`, `emailnhan`, `Chudethu`, `Noidung`, `Ngaygui`,`mamail`) 
+        VALUES ('NULL','$email_gui','$email_nhan','$Chude','$Noidung','$Ngaygui',1)";
+    $sql2 = "INSERT INTO `db_hopthu`(`Mathu`,`emailgui`, `emailnhan`, `Chudethu`, `Noidung`, `Ngaygui`,`mamail`) 
+    VALUES ('NULL','$email_gui','$email_nhan','$Chude','$Noidung','$Ngaygui',0)";
 
-    $ketqua = mysqli_query($conn, $sql);
+    $ketqua1 = mysqli_query($conn, $sql1);
+    $ketqua2 = mysqli_query($conn, $sql2);
     
-    if(!$ketqua){
+    if(!$ketqua1 or !$ketqua2){
         header("location: error.php"); //Chuyển hướng lỗi
     }else{
         header("location: thudagui.php"); //Chuyển hướng lại Trang Quản trị

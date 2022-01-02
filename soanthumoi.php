@@ -31,6 +31,11 @@
                                         <div class="mb-3 mt-3">
                                             <label for="Emailnhan" class="form-label">Người nhận :</label>
                                             <input type="Emailnhan" class="form-control" id="emailnhan" name="txtEmailnhan" placeholder="Enter email nhận">
+                                            <?php 
+                                                if(isset($_GET['error'])){
+                                                    echo "<p style = 'color:red'>{$_GET['error']}</p>";
+                                                }
+                                            ?>
                                         </div>
                                         <div class="mb-3 mt-3">
                                             <label for="Chude" class="form-label">Chủ đề :</label>

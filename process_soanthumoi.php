@@ -35,22 +35,31 @@
     if(!$conn){
         die("Kết nối thất bại. Vui lòng kiểm tra lại các thông tin máy chủ");
     }
+    //Kiểm tra xem có email nhận không
+    $sql = "SELECT * FROM db_nguoidung WHERE email = '$email_nhan' ";
+    $result = mysqli_query($conn, $sql);
+    if (mysqli_num_rows($result) > 0) 
+    {
+            // Bước 02: Thực hiện truy vấn
+            $sql1 = "INSERT INTO `db_hopthu`(`Mathu`,`emailgui`, `emailnhan`, `Chudethu`, `Noidung`, `Ngaygui`,`mamail`) 
+             VALUES ('NULL','$email_gui','$email_nhan','$Chude','$Noidung','$Ngaygui',1)";
+            $sql2 = "INSERT INTO `db_hopthu`(`Mathu`,`emailgui`, `emailnhan`, `Chudethu`, `Noidung`, `Ngaygui`,`mamail`) 
+            VALUES ('NULL','$email_gui','$email_nhan','$Chude','$Noidung','$Ngaygui',0)";
 
-    // Bước 02: Thực hiện truy vấn
-    $sql1 = "INSERT INTO `db_hopthu`(`Mathu`,`emailgui`, `emailnhan`, `Chudethu`, `Noidung`, `Ngaygui`,`mamail`) 
-        VALUES ('NULL','$email_gui','$email_nhan','$Chude','$Noidung','$Ngaygui',1)";
-    $sql2 = "INSERT INTO `db_hopthu`(`Mathu`,`emailgui`, `emailnhan`, `Chudethu`, `Noidung`, `Ngaygui`,`mamail`) 
-    VALUES ('NULL','$email_gui','$email_nhan','$Chude','$Noidung','$Ngaygui',0)";
+            $ketqua1 = mysqli_query($conn, $sql1);  
+            $ketqua2 = mysqli_query($conn, $sql2);
 
-    $ketqua1 = mysqli_query($conn, $sql1);
-    $ketqua2 = mysqli_query($conn, $sql2);
-    
-    if(!$ketqua1 or !$ketqua2){
-        header("location: error.php"); //Chuyển hướng lỗi
-    }else{
-        header("location: thudagui.php"); //Chuyển hướng lại Trang Quản trị
+            if(!$ketqua1 or !$ketqua2){
+                header("location: error.php"); //Chuyển hướng lỗi
+            }else{
+                header("location: thudagui.php"); //Chuyển hướng lại Trang Quản trị
+            }
     }
-
+    else{
+        $error = "Email người nhận không tồn tại !";
+        header("location: soanthumoi.php?error=$error"); //Chuyển hướng, hiển thị thông báo lỗi
+    }
+    
     // Bước 03: Đóng kết nối
     mysqli_close($conn);
 ?>

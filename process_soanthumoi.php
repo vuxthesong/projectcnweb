@@ -8,7 +8,7 @@
     $username = $_SESSION['isLoginOK'];
     // Xử lý giá trị GỬI TỚI
 
-    $email_gui     = $_POST['txtEmailgui'];
+    $email_gui     = $username;
     $email_nhan     = $_POST['txtEmailnhan'];
     $Chude        = $_POST['txtChude'];
     $Noidung        = $_POST['txtNoidung'];

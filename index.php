@@ -15,7 +15,7 @@ include("./assets/template/header1.php");
                     dụng khác, tất cả đều ở cùng một nơi.</p>
             </div>
             <div class="col-md-8">
-                <img class="img-fluid rounded mx-auto d-block" src="images/unnamed.webp" alt="" />
+                <img class="img-fluid rounded mx-auto d-block" src="./assets/img/unnamed.webp" alt="" />
             </div>
 
         </div>

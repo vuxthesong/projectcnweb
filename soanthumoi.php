@@ -29,10 +29,6 @@
                                 <div class="noidung-gmail container-fluid">
                                     <form action="process_soanthumoi.php" method="post">
                                         <div class="mb-3 mt-3">
-                                            <label for="Emailgui" class="form-lab" >Người gửi :</label>
-                                            <input type="Emailgui" class="form-control" id="emailgui" name="txtEmailgui" placeholder="Enter email gửi" >
-                                        </div>
-                                        <div class="mb-3 mt-3">
                                             <label for="Emailnhan" class="form-label">Người nhận :</label>
                                             <input type="Emailnhan" class="form-control" id="emailnhan" name="txtEmailnhan" placeholder="Enter email nhận">
                                         </div>

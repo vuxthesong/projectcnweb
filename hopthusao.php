@@ -48,7 +48,7 @@ require("./assets/template/khung_gmail.php");
                             die("Kết nối thất bại. Vui lòng kiểm tra lại các thông tin máy chủ");
                         }
                         // Bước 02: Thực hiện truy vấn
-                        $sql = "SELECT `Mathu`,`emailgui`,`emailnhan`, `Chudethu`, `Ngaygui` FROM `db_hopthu` WHERE ( emailnhan = '$username' and mamail = 0 and Sao = 1 ) or (emailgui = '$username' and mamail = 1 and Sao = 1 ) ";
+                        $sql = "SELECT `Mathu`,`emailgui`,`emailnhan`, `Chudethu`, `Ngaygui` FROM `db_hopthu` WHERE ( emailnhan = '$username' and mamail = 0 and Sao = 1 )";
                         $result = mysqli_query($conn, $sql);
                         // Bước 03: Xử lý kết quả truy vấn
                         if (mysqli_num_rows($result) > 0) {
@@ -62,7 +62,30 @@ require("./assets/template/khung_gmail.php");
                                     <td><?php echo $row['Chudethu']; ?></td>
                                     <td><?php echo $row['Ngaygui']; ?></td>
                                     <td><a href="danhdausao_mail_hopthusao.php?Mathu=<?php echo $row['Mathu']; ?>"><i class="bi bi-star-fill text-warning ms-4"></i></a></td>
-                                    <td><a href="doc_mail.php?Mathu=<?php echo $row['Mathu']; ?>"><i class="bi bi-book ms-4"></i></a></td>
+                                    <td><a href="doc_mailden.php?Mathu=<?php echo $row['Mathu']; ?>"><i class="bi bi-book ms-4"></i></a></td>
+                                    <td><a href="delete_mail.php?Mathu=<?php echo $row['Mathu']; ?>"><i class="bi bi-trash ms-2 "></i></a></td>
+
+                                </tr>
+
+                        <?php
+                            }
+                        }
+
+                        $sql = "SELECT `Mathu`,`emailgui`,`emailnhan`, `Chudethu`, `Ngaygui` FROM `db_hopthu` WHERE  (emailgui = '$username' and mamail = 1 and Sao = 1 ) ";
+                        $result = mysqli_query($conn, $sql);
+                        // Bước 03: Xử lý kết quả truy vấn
+                        if (mysqli_num_rows($result) > 0) {
+                            while ($row = mysqli_fetch_assoc($result)) {
+                        ?>
+
+                                <tr>
+
+                                    <th scope="row"><?php echo $row['emailgui']; ?></th>
+                                    <td><?php echo $row['emailnhan']; ?></td>
+                                    <td><?php echo $row['Chudethu']; ?></td>
+                                    <td><?php echo $row['Ngaygui']; ?></td>
+                                    <td><a href="danhdausao_mail_hopthusao.php?Mathu=<?php echo $row['Mathu']; ?>"><i class="bi bi-star-fill text-warning ms-4"></i></a></td>
+                                    <td><a href="doc_maildagui.php?Mathu=<?php echo $row['Mathu']; ?>"><i class="bi bi-book ms-4"></i></a></td>
                                     <td><a href="delete_mail.php?Mathu=<?php echo $row['Mathu']; ?>"><i class="bi bi-trash ms-2 "></i></a></td>
 
                                 </tr>

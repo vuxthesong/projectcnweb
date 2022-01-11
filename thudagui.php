@@ -60,7 +60,7 @@ require("./assets/template/khung_gmail.php");
                                     <td><?php echo $row['Chudethu']; ?></td>
                                     <td><?php echo $row['Ngaygui']; ?></td>
                                     <td><a id="the_star" href="danhdausao_mail_thudagui.php?Mathu=<?php echo $row['Mathu']; ?>"><i id="icon_star" class="bi bi-star-fill text-warning ms-4"></i></a> </td>
-                                    <td><a href="doc_mail.php?Mathu=<?php echo $row['Mathu']; ?>"><i class="bi bi-book ms-4"></i></a></td>
+                                    <td><a href="doc_maildagui.php?Mathu=<?php echo $row['Mathu']; ?>"><i class="bi bi-book ms-4"></i></a></td>
                                     <td><a href="delete_mail_thudagui.php?Mathu=<?php echo $row['Mathu']; ?>"><i class="bi bi-trash ms-2 "></i></a></td>
 
                                 </tr>
@@ -82,7 +82,7 @@ require("./assets/template/khung_gmail.php");
                                     <td><?php echo $row['Chudethu']; ?></td>
                                     <td><?php echo $row['Ngaygui']; ?></td>
                                     <td><a id="the_star" href="danhdausao_mail_thudagui.php?Mathu=<?php echo $row['Mathu']; ?>"><i id="icon_star" class="bi bi-star-fill text-light ms-4"></i></a> </td>
-                                    <td><a href="doc_mail.php?Mathu=<?php echo $row['Mathu']; ?>"><i class="bi bi-book ms-4"></i></a></td>
+                                    <td><a href="doc_maildagui.php?Mathu=<?php echo $row['Mathu']; ?>"><i class="bi bi-book ms-4"></i></a></td>
                                     <td><a href="delete_mail_thudagui.php?Mathu=<?php echo $row['Mathu']; ?>"><i class="bi bi-trash ms-2 "></i></a></td>
 
                                 </tr>

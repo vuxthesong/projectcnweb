@@ -7,6 +7,11 @@
         }
         $username = $_SESSION['isLoginOK'];
 
+        //Lấy mã thư từ trang hộp thư truyền sang
+        $noidung = $_GET['Noidung'];
+        
+
+
     require ("./assets/template/khung_gmail.php");
 ?>
                     <!-- Phần hiển thị nội dung mail -->
@@ -30,7 +35,7 @@
                                     <form action="process_soanthumoi.php" method="post">
                                         <div class="mb-3 mt-3">
                                             <label for="Emailnhan" class="form-label">Người nhận :</label>
-                                            <input type="Emailnhan" class="form-control" id="emailnhan" name="txtEmailnhan" placeholder="Enter email nhận">
+                                            <input type="Emailnhan" class="form-control"  id="emailnhan" name="txtEmailnhan" placeholder="Enter email nhận" value= "">
                                             <?php 
                                                 if(isset($_GET['error'])){
                                                     echo "<p style = 'color:red'>{$_GET['error']}</p>";
@@ -39,16 +44,16 @@
                                         </div>
                                         <div class="mb-3 mt-3">
                                             <label for="Chude" class="form-label">Chủ đề :</label>
-                                            <input type="Chude" class="form-control" id="chude" name="txtChude" placeholder="Chủ đề">
+                                            <input type="Chude" class="form-control"  id="chude" name="txtChude" placeholder="Chủ đề" value="" >
                                         </div>
                                         <label for="Noidung">Nội dung:</label>
-                                        <textarea class="form-control" rows="7" id="noidung" placeholder="Nhập nội dung ..." name="txtNoidung" ></textarea>
+                                        <textarea class="form-control" rows="7" id="noidung" readonly placeholder="Nhập nội dung ..." name="txtNoidung"  > *chuyển tiếp : <?php echo $noidung ?></textarea>
 
 
                                 </div>
                                 <div class="d-row col-6 mx-auto mt-3">
                                     <button type="submit" class="btn btn-primary me-4 btn-lg">Gửi</button>
-                                    <a href="soanthumoi.php" class="btn btn-primary btn-lg">Hủy</a>
+                                    <a href="hopthuden.php" class="btn btn-primary btn-lg">Hủy</a>
                                 </div>
                                 </form>
                             </div>

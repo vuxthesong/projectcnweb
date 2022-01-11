@@ -11,7 +11,7 @@ require("./assets/template/khung_gmail.php");
 
 
 <!-- Phần hiển thị nội dung mail -->
-<div class="container-noidunggamil ">
+<div class="container-noidunggamil">
     <div class="content row ms-3 overflow-auto ">
         <div class="col-md-12 ">
             <nav class="nav-3 navbar navbar-light bg-white border-bottom  ">
@@ -94,7 +94,6 @@ require("./assets/template/khung_gmail.php");
                         // Bước 03: Đóng kết nối
                         mysqli_close($conn);
                         ?>
-
                     </tbody>
 
                 </table>

@@ -13,7 +13,7 @@ if (!isset($_SESSION['isLoginAdOK'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel = "icon" href="./assets/img/mail_black.png" type="image/x-icon" >
+    <link rel="icon" href="./assets/img/mail_black.png" type="image/x-icon">
     <title>Danh sách người dùng</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -34,7 +34,7 @@ if (!isset($_SESSION['isLoginAdOK'])) {
                         <th scope="col">Giới tính</th>
                         <th scope="col">Ngày sinh</th>
                         <th scope="col">Địa chỉ</th>
-
+                        <th scope="col">Trạng thái</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -46,7 +46,7 @@ if (!isset($_SESSION['isLoginAdOK'])) {
                         die("Kết nối thất bại. Vui lòng kiểm tra lại các thông tin máy chủ");
                     }
                     // Bước 02: Thực hiện truy vấn
-                    $sql = "SELECT `mand`, `email`, `Hoten`, `GioiTinh`, `Ngaysinh`, `Diachi` FROM db_nguoidung";
+                    $sql = "SELECT `mand`, `email`, `Hoten`, `GioiTinh`, `Ngaysinh`, `Diachi` ,`makhoa` FROM db_nguoidung where makhoa = 1 ";
                     $result = mysqli_query($conn, $sql);
                     // Bước 03: Xử lý kết quả truy vấn
                     if (mysqli_num_rows($result) > 0) {
@@ -59,11 +59,34 @@ if (!isset($_SESSION['isLoginAdOK'])) {
                                 <td><?php echo $row['GioiTinh']; ?></td>
                                 <td><?php echo $row['Ngaysinh']; ?></td>
                                 <td><?php echo $row['Diachi']; ?></td>
+                                <td><a href="khoataikhoan.php?mand=<?php echo $row['mand']; ?>"><i class="bi bi-key-fill text-warning "></i></a></td>
+                            </tr>
+                        <?php
+                        }
+                    }
+
+                    // Bước 02: Thực hiện truy vấn
+                    $sql = "SELECT `mand`, `email`, `Hoten`, `GioiTinh`, `Ngaysinh`, `Diachi` ,`makhoa` FROM db_nguoidung where makhoa = 0 ";
+                    $result = mysqli_query($conn, $sql);
+                    // Bước 03: Xử lý kết quả truy vấn
+                    if (mysqli_num_rows($result) > 0) {
+                        while ($row = mysqli_fetch_assoc($result)) {
+                        ?>
+                            <tr>
+                                <th scope="row"><?php echo $row['mand']; ?></th>
+                                <td><?php echo $row['email']; ?></td>
+                                <td><?php echo $row['Hoten']; ?></td>
+                                <td><?php echo $row['GioiTinh']; ?></td>
+                                <td><?php echo $row['Ngaysinh']; ?></td>
+                                <td><?php echo $row['Diachi']; ?></td>
+                                <td><a href="khoataikhoan.php?mand=<?php echo $row['mand']; ?>"><i class="bi bi-key-fill text-success"></i></a></td>
                             </tr>
                     <?php
                         }
                     }
                     ?>
+
+
 
                 </tbody>
             </table>

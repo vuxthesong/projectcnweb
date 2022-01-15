@@ -19,7 +19,7 @@ include("./assets/template/header1.php");
                 </label>
                     <?php
                     if(isset($_GET['error'])){
-                        echo "<h5 style='color:red'> {$_GET['error']} </h5>";
+                        echo "<h6 style='color:red'> {$_GET['error']} </h6>";
                     }
                     ?>
                 

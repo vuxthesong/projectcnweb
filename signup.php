@@ -58,16 +58,20 @@
         <form class="form-signin" action="process-signup.php" method="post">
             
             <h1 class="h3 mb-3 font-weight-normal">Sign Up</h1>
-            <label for="txtUser" class="sr-only">Name</label>
-            <input type="text" id="txtName" name="txtUser" class="form-control" placeholder="Full Name" required autofocus>
-            <label for="txtUser" class="sr-only">Username</label>
-            <input type="text" id="txtUser" name="txtUser" class="form-control" placeholder="Username" required autofocus>
             <label for="inputEmail" class="sr-only">Email address</label>
             <input type="email" id="inputEmail" name="txtEmail" class="form-control" placeholder="Email address" required autofocus>
             <label for="inputPassword" class="sr-only">Password</label>
             <input type="password" id="inputPassword" name="txtPass1" class="form-control" placeholder="Password" required>
             <label for="inputRetypePassword" class="sr-only">Retype Password</label>
             <input type="password" id="inputRetypePassword" name="txtPass2" class="form-control" placeholder="Password" required>
+            <label for="txtUser" class="sr-only">Username</label>
+            <input type="text" id="txtUser" name="txtUser" class="form-control" placeholder="Username" required autofocus>
+            <label for="txtUser" class="sr-only">Giới Tính</label>
+            <input type="text" id="txtSex" name="txtSex" class="form-control" placeholder="Nam or Nữ" required autofocus>
+            <label for="txtUser" class="sr-only">Ngày Sinh</label>
+            <input type="text" id="txtNgaysinh" name="txtNgaysinh" class="form-control" placeholder="yy/mm/dd" required autofocus>
+            <label for="txtUser" class="sr-only">Địa Chỉ</label>
+            <input type="text" id="txtDiachi" name="txtDiachi" class="form-control" placeholder="Nhập tỉnh" required autofocus>
             <div class="checkbox mb-3">
                 
                     <?php

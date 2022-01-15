@@ -8,6 +8,9 @@ use Componere\Value;
     $pass1 =$_POST['txtPass1'];
     $pass2 =$_POST['txtPass2'];
     $user =$_POST['txtUser'];
+    $sex =$_POST['txtSex'];
+    $ngaysinh =$_POST['txtNgaysinh'];
+    $diachi =$_POST['txtDiachi'];
      // Bước 01: Kết nối Database Server
      $conn = mysqli_connect('localhost','root','','btlcnweb');
      if(!$conn){
@@ -24,8 +27,7 @@ use Componere\Value;
          $error = "Username or Email is existed";
          header("location: signup.php?error=$error"); //Chuyển hướng, hiển thị thông báo lỗi
      }else{
-         $pass_hash = password_hash($pass1, PASSWORD_DEFAULT);
-         $sql02 ="INSERT INTO db_nguoidung(email,matkhau,Hoten) VALUES('$email','$pass_hash','$user')";
+         $sql02 ="INSERT INTO db_nguoidung(email,matkhau,Hoten,GioiTinh,Ngaysinh,Diachi) VALUES('$email','$pass1','$user','$sex','$ngaysinh','$diachi')";
          $result02 = mysqli_query($conn,$sql02);
          if ($result02 == true){
              header("location:login.php");

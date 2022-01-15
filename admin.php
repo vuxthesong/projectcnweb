@@ -25,6 +25,7 @@ if (!isset($_SESSION['isLoginAdOK'])) {
 
         <div class="container">
             <h5 class="text-center text-primary my-5">DANH SÁCH NGƯỜI DÙNG</h5>
+            <a class="btn btn-primary mb-2 ms-1" href="logout.php" role="button">Thoát admin</a>
             <table class="table text-center">
                 <thead>
                     <tr>

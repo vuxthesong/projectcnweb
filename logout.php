@@ -6,4 +6,9 @@
         header("location:login.php");
     }
 
+    if(isset($_SESSION['isLoginAdOK'])){
+        unset($_SESSION['isLoginAdOK']);
+        header("location:myadmin.php");
+    }
+
 ?>
